@@ -1,8 +1,9 @@
 import Controller.CurrencyConverter;
-import View.Window;
+import View.WindowChooseCurrency;
 
 public class Main {
     public static void main(String[] args) {
         CurrencyConverter currencyConverter = new CurrencyConverter();
+        WindowChooseCurrency windowChooseCurrency = new WindowChooseCurrency();
     }
 }

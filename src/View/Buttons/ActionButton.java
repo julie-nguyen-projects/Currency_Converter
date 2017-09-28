@@ -10,13 +10,15 @@ public class ActionButton extends JButton {
         switch (type){
             case "x":
                 this.setText("x");
+                this.setBackground(new Color(200, 210, 255));
                 break;
             case "+" :
                 this.setText("+");
+                this.setBackground(new Color(59, 89, 182));
         }
         this.setOpaque(false);
-        this.setBackground(new Color(59, 89, 182));
         this.setForeground(Color.WHITE);
+        this.setPreferredSize(new Dimension(60, 60));
     }
 
     protected void paintComponent(Graphics g) {

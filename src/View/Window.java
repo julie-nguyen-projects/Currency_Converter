@@ -2,10 +2,10 @@ package View;
 
 import Model.Currency;
 import View.Buttons.ActionButton;
+import View.Buttons.CurrencyButton;
 import View.Buttons.InputButton;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
@@ -31,7 +31,6 @@ public class Window extends JFrame {
     }
 
 
-
     public Window() throws HeadlessException {
         super("Currency converter");
         this.setSize(600, 900);
@@ -46,38 +45,36 @@ public class Window extends JFrame {
     }
 
     public void displayCurrencies(ArrayList<Currency> currencies) {
-        if (currencies.size() == 1) {
-            // Ligne sans croix
+        for (Currency currency : currencies) {
             JPanel linePanel = new JPanel();
             linePanel.setPreferredSize(new Dimension(590, 75));
             // croix disabled = action button x
             ActionButton xButton = new ActionButton("x");
-            xButton.setEnabled(false);
-            xButton.setPreferredSize(new Dimension(60,60));
+            // Ligne sans croix
+            if (currencies.size() == 1) {
+                xButton.setEnabled(false);
+            }
 
             // border
             LineBorder line = new LineBorder(Color.lightGray, 3, true);
 
             // currency name
-            JLabel label = new JLabel(currencies.get(0).getName());
+            JLabel label = new JLabel(currency.getName());
             label.setHorizontalAlignment(JLabel.CENTER);
             label.setPreferredSize(new Dimension(150, 60));
             label.setBorder(line);
             label.setOpaque(true);
             label.setBackground(new Color(224, 224, 209));
 
-
             // currency input = currency button
-            InputButton inputButton = new InputButton("0");
-            inputButton.setPreferredSize(new Dimension(150, 60));
+            CurrencyButton inputButton = new CurrencyButton();
 
             // currency image
-            JLabel image = new JLabel(new ImageIcon("../Currency_Converter/src/euro.png"));
-            image.setPreferredSize(new Dimension(60,60));
+            CurrencyLabel image = new CurrencyLabel(currencies.get(0).getName());
 
             // action button +
             ActionButton plusButton = new ActionButton("+");
-            plusButton.setPreferredSize(new Dimension(60,60));
+            plusButton.setPreferredSize(new Dimension(60, 60));
 
             linePanel.add(xButton);
             linePanel.add(label);
@@ -86,11 +83,6 @@ public class Window extends JFrame {
             linePanel.add(plusButton);
 
             outputPanel.add(linePanel);
-        } else {
-            // Lignes complètes
-            for (Currency currency : currencies) {
-
-            }
         }
     }
 
@@ -126,7 +118,7 @@ public class Window extends JFrame {
         inputButtons.add(new InputButton("."));
         inputButtons.add(new InputButton("C"));
 
-        for (int i = 0 ; i < inputButtons.size() ; i ++) {
+        for (int i = 0; i < inputButtons.size(); i++) {
             if (i < 3) {
                 sevenToNinePanel.add(inputButtons.get(i));
             } else if (i < 6) {
@@ -138,10 +130,10 @@ public class Window extends JFrame {
             }
         }
 
-        sevenToNinePanel.setPreferredSize(new Dimension(225,60));
-        fourToSixPanel.setPreferredSize(new Dimension(225,60));
-        oneToThreePanel.setPreferredSize(new Dimension(225,60));
-        specialCharPanel.setPreferredSize(new Dimension(225,60));
+        sevenToNinePanel.setPreferredSize(new Dimension(225, 60));
+        fourToSixPanel.setPreferredSize(new Dimension(225, 60));
+        oneToThreePanel.setPreferredSize(new Dimension(225, 60));
+        specialCharPanel.setPreferredSize(new Dimension(225, 60));
 
 
         aroundCharPanel.add(sevenToNinePanel);

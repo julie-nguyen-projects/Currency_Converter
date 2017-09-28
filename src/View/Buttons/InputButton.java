@@ -9,10 +9,10 @@ public class InputButton extends JButton {
     public InputButton(String text) {
         super(text);
         this.setPreferredSize(new Dimension(50, 50));
-
         this.setOpaque(false);
         this.setBackground(Color.GRAY);
         this.setForeground(Color.WHITE);
+
     }
 
     protected void paintComponent(Graphics g) {
@@ -21,18 +21,20 @@ public class InputButton extends JButton {
         } else {
             g.setColor(getBackground());
         }
-        g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 20, 20);
+        g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
         super.paintComponent(g);
     }
+
     protected void paintBorder(Graphics g) {
         g.setColor(getForeground());
-        g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, 20, 20);
+        g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
     }
 
     private Shape shape;
+
     public boolean contains(int x, int y) {
         if (shape == null || !shape.getBounds().equals(getBounds())) {
-            shape = new RoundRectangle2D.Float(0, 0, getWidth()-1, getHeight()-1, 40, 40);
+            shape = new RoundRectangle2D.Float(0, 0, getWidth() - 1, getHeight() - 1, 40, 40);
         }
         return shape.contains(x, y);
     }
