@@ -5,6 +5,8 @@ import View.Buttons.ActionButton;
 import View.Buttons.InputButton;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -53,9 +55,17 @@ public class Window extends JFrame {
             xButton.setEnabled(false);
             xButton.setPreferredSize(new Dimension(60,60));
 
+            // border
+            LineBorder line = new LineBorder(Color.lightGray, 3, true);
+
             // currency name
             JLabel label = new JLabel(currencies.get(0).getName());
+            label.setHorizontalAlignment(JLabel.CENTER);
             label.setPreferredSize(new Dimension(150, 60));
+            label.setBorder(line);
+            label.setOpaque(true);
+            label.setBackground(new Color(224, 224, 209));
+
 
             // currency input = currency button
             InputButton inputButton = new InputButton("0");
@@ -133,6 +143,7 @@ public class Window extends JFrame {
         oneToThreePanel.setPreferredSize(new Dimension(225,60));
         specialCharPanel.setPreferredSize(new Dimension(225,60));
 
+
         aroundCharPanel.add(sevenToNinePanel);
         aroundCharPanel.add(fourToSixPanel);
         aroundCharPanel.add(oneToThreePanel);
@@ -141,11 +152,15 @@ public class Window extends JFrame {
         aroundCharPanel.setPreferredSize(new Dimension(200, 280));
 
         JPanel leftCharPanel = new JPanel();
+        leftCharPanel.setBackground(new Color(224, 224, 209));
+
         JPanel rightCharPanel = new JPanel();
+        rightCharPanel.setBackground(new Color(224, 224, 209));
         leftCharPanel.setSize(new Dimension(30, 300));
         //rightCharPanel.setPreferredSize(new Dimension(38, 300));
         inputPanel.add(leftCharPanel);
         inputPanel.add(aroundCharPanel);
         inputPanel.add(rightCharPanel);
+        inputPanel.setBackground(new Color(224, 224, 209));
     }
 }
