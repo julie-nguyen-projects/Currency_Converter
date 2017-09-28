@@ -14,7 +14,7 @@ public class CurrencyConverter implements ActionListener {
 
     public CurrencyConverter() {
         currencies.add(new Currency("Euro"));
-        currencies.add(new Currency("Euro"));
+        currencies.add(new Currency("test"));
         window.displayCurrencies(currencies);
     }
 

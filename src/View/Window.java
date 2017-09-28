@@ -34,17 +34,17 @@ public class Window extends JFrame {
     public Window() throws HeadlessException {
         super("Currency converter");
         this.setSize(600, 900);
-        this.setVisible(true);
         this.setResizable(false);
 
         initComponents();
 
         this.add(scrollPane, BorderLayout.CENTER);
         this.add(inputPanel, BorderLayout.SOUTH);
-
+        this.setVisible(true);
     }
 
     public void displayCurrencies(ArrayList<Currency> currencies) {
+        outputPanel.setPreferredSize(new Dimension(600, 75 * currencies.size()));
         for (Currency currency : currencies) {
             JPanel linePanel = new JPanel();
             linePanel.setPreferredSize(new Dimension(590, 75));
@@ -53,6 +53,7 @@ public class Window extends JFrame {
             // Ligne sans croix
             if (currencies.size() == 1) {
                 xButton.setEnabled(false);
+                xButton.setBackground(new Color(200, 220, 255));
             }
 
             // border
