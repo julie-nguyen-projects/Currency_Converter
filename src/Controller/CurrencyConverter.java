@@ -80,7 +80,7 @@ public class CurrencyConverter implements ActionListener {
 
             // parcourir hashmap String , JLabel et update : utiliser dollarToCurrent
             for (String currencyNameFromMap : window.getCurrencyButtonMap().keySet()) {
-                if (!currencyNameFromMap.equals((String) getKeyFromValue(window.getCurrencyButtonMap(), currentCurrency))) {
+                if (!currencyNameFromMap.equals(getKeyFromValue(window.getCurrencyButtonMap(), currentCurrency))) {
                     String resultToDisplay = convertDollarToCurrency(result, currencyNameFromMap);
                     CurrencyButton currencyButton = window.getCurrencyButtonMap().get(currencyNameFromMap);
                     currencyButton.setText(resultToDisplay);
