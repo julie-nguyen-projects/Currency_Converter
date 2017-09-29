@@ -6,4 +6,8 @@ public class Main {
         CurrencyConverter currencyConverter = new CurrencyConverter();
         WindowChooseCurrency windowChooseCurrency = new WindowChooseCurrency();
     }
+
+    private void coucou(){
+        System.out.println("coucou");
+    }
 }
