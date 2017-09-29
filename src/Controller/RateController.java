@@ -22,7 +22,20 @@ public class RateController {
     public void initCurrencies() {
         initEuroCurrency();
         initAustralianDollarCurrency();
+        initBrazilianRealCurrency();
+        initCanadianDollarCurrency();
+        initDinarCurrency();
+        initDollarCurrency();
+        initEgyptianPoundCurrency();
+        initFrancCurrency();
+        initGoldOunce();
+        initIcelandicKronaCurrency();
+        initIndianRupeeCurrency();
+        initJapaneseYenCurrency();
+        initMexicanPesoCurrency();
         initPoundCurrency();
+        initQuatarianRialCurrency();
+        initRussianRubleCurrency();
 
         try (Writer writer = new FileWriter(JSON_PATH)){
             Gson gson = new GsonBuilder().create();
@@ -75,6 +88,94 @@ public class RateController {
         currencies.add(australianDollar);
     }
 
+    private void initBrazilianRealCurrency() {
+        Currency newCurrency = new Currency(Constants.BRAZILIAN_REAL);
+        newCurrency.setDollarToCurrent(3.18717);
+        newCurrency.setCurrentToDollar(0.31345);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initCanadianDollarCurrency() {
+        Currency newCurrency = new Currency(Constants.CANADIAN_DOLLAR);
+        newCurrency.setDollarToCurrent(1.24656);
+        newCurrency.setCurrentToDollar(0.80210);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initDinarCurrency() {
+        Currency newCurrency = new Currency(Constants.DINAR);
+        newCurrency.setDollarToCurrent(112.829);
+        newCurrency.setCurrentToDollar(0.00880);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initDollarCurrency() {
+        Currency newCurrency = new Currency(Constants.DOLLAR);
+        newCurrency.setDollarToCurrent(1);
+        newCurrency.setCurrentToDollar(1);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initEgyptianPoundCurrency() {
+        Currency newCurrency = new Currency(Constants.EGYPTIAN_POUND);
+        newCurrency.setDollarToCurrent(17.6160);
+        newCurrency.setCurrentToDollar(0.05658);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initFrancCurrency() {
+        Currency newCurrency = new Currency(Constants.FRANC);
+        newCurrency.setDollarToCurrent(5.57439);
+        newCurrency.setCurrentToDollar(0.17937);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initGoldOunce() {
+        Currency newCurrency = new Currency(Constants.GOLD_OUNCE);
+        newCurrency.setDollarToCurrent(0.00078);
+        newCurrency.setCurrentToDollar(1284.17);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initIcelandicKronaCurrency() {
+        Currency newCurrency = new Currency(Constants.ICELANDIC_KRONA);
+        newCurrency.setDollarToCurrent(106.198);
+        newCurrency.setCurrentToDollar(0.00937);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initIndianRupeeCurrency() {
+        Currency newCurrency = new Currency(Constants.INDIAN_RUPEE);
+        newCurrency.setDollarToCurrent(65.6029);
+        newCurrency.setCurrentToDollar(0.01522);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initJapaneseYenCurrency() {
+        Currency newCurrency = new Currency(Constants.JAPANESE_YEN);
+        newCurrency.setDollarToCurrent(112.67);
+        newCurrency.setCurrentToDollar(0.00887);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initMexicanPesoCurrency() {
+        Currency newCurrency = new Currency(Constants.MEXICAN_PESO);
+        newCurrency.setDollarToCurrent(18.2026);
+        newCurrency.setCurrentToDollar(0.05491);
+
+        currencies.add(newCurrency);
+    }
+
     private void initPoundCurrency() {
         Currency pound = new Currency(Constants.POUND);
         pound.setDollarToCurrent(0.746212969);
@@ -82,4 +183,23 @@ public class RateController {
 
         currencies.add(pound);
     }
+
+    private void initQuatarianRialCurrency() {
+        Currency newCurrency = new Currency(Constants.QUATARIAN_RIAL);
+        newCurrency.setDollarToCurrent(3.60052);
+        newCurrency.setCurrentToDollar(0.26695);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initRussianRubleCurrency() {
+        Currency newCurrency = new Currency(Constants.RUSSIAN_RUBLE);
+        newCurrency.setDollarToCurrent(58.0700);
+        newCurrency.setCurrentToDollar(0.01720);
+
+        currencies.add(newCurrency);
+    }
+
+
+
 }
