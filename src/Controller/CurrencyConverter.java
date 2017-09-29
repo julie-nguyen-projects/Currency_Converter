@@ -56,6 +56,8 @@ public class CurrencyConverter implements ActionListener {
                 }
             }else{
                 //Suppression de ligne
+                String currencyName = (String) getKeyFromValue(window.getActionButtonMap(), (ActionButton) actionEvent.getSource());
+
                 //TODO
                 }
         }else if (command!=""){
@@ -76,4 +78,14 @@ public class CurrencyConverter implements ActionListener {
             windowChooseCurrency.setVisible(false);
         }
     }
+
+    private static Object getKeyFromValue(Map hm, Object value) {
+        for (Object o : hm.keySet()) {
+            if (hm.get(o).equals(value)) {
+                return o;
+            }
+        }
+        return null;
+    }
+
 }
