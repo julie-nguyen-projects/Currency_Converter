@@ -10,6 +10,7 @@ import View.WindowChooseCurrency;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Map;
 
@@ -57,7 +58,6 @@ public class CurrencyConverter implements ActionListener {
                 } else {
                     if (currentCurrency.getText().contains(".")) {
                         if (!currentCurrency.getText().endsWith(".")) {
-                            System.out.println(currentCurrency.getText());
                             if ((currentCurrency.getText().split("\\.")[1]).length() < 2) {
                                 currentCurrency.setText(currentCurrency.getText() + command);
                             }
@@ -146,7 +146,14 @@ public class CurrencyConverter implements ActionListener {
 
     private String convertDollarToCurrency(double amount, String currencyName) {
         Currency currency = rateController.retrieveCurrencyFromJsonFile(currencyName);
-        return String.valueOf(amount * currency.getDollarToCurrent());
+        BigDecimal result = round(amount * currency.getDollarToCurrent());
+        return String.valueOf(result);
+    }
+
+    private static BigDecimal round(double d) {
+        BigDecimal bd = new BigDecimal(Double.toString(d));
+        bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+        return bd;
     }
 
 }
