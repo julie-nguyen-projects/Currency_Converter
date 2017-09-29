@@ -82,6 +82,7 @@ public class Window extends JFrame {
             linePanel.add(plusButton);
 
             outputPanel.add(linePanel);
+            this.setVisible(true);
         }
     }
 
