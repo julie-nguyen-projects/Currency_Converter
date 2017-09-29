@@ -88,4 +88,10 @@ public class CurrencyConverter implements ActionListener {
         return null;
     }
 
+    private void convertCurrencyToDollar(String amount, String currencyName) {
+        Currency currency = rateController.retrieveCurrencyFromJsonFile(currencyName);
+
+
+    }
+
 }

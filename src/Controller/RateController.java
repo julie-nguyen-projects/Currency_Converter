@@ -33,6 +33,15 @@ public class RateController {
         retrieveCurrencies();
     }
 
+    public Currency retrieveCurrencyFromJsonFile(String name) {
+        List<Currency> currencies = retrieveCurrencies();
+        Currency currencyToRetrieve = null;
+        for (Currency currency : currencies) {
+            if (currency.getName().equals(name)) currencyToRetrieve = currency;
+        }
+        return currencyToRetrieve;
+    }
+
     private List<Currency> retrieveCurrencies() {
         Gson gson = new Gson();
 
@@ -62,12 +71,6 @@ public class RateController {
         australianDollar.setCurrentToDollar(0.78);
 
         currencies.add(australianDollar);
-    }
-
-    public Currency retrieveCurrencyFromJsonFile(String name) {
-
-
-        return new Currency("test");
     }
 
     private static String readFile(String filename) {
