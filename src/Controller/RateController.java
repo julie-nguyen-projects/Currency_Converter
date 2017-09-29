@@ -9,6 +9,9 @@ public class RateController {
     }
 
     private void initEuroCurrency () {
+        Currency euro = new Currency("euro");
+        euro.setDollarToCurrent(0.85);
+        euro.setCurrentToDollar(1.18);
 
 
     }
