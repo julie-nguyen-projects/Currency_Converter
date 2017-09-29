@@ -44,6 +44,7 @@ public class Window extends JFrame {
         outputPanel.removeAll();
         actionButtonMap = new HashMap<>();
         currencyButtonMap = new HashMap<>();
+        plusButtons.removeAll(plusButtons);
 
         outputPanel.setPreferredSize(new Dimension(600, 80 * currencies.size()));
         for (Currency currency : currencies) {

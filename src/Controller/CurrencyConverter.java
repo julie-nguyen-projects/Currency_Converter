@@ -28,12 +28,13 @@ public class CurrencyConverter implements ActionListener {
         rateController.initCurrencies();
         window.displayCurrencies(currencies);
         initEvent();
-    }
-
-    private void initEvent() {
         for (JButton button : window.getInputButtons()) {
             button.addActionListener(this);
         }
+    }
+
+    private void initEvent() {
+
         for (ActionButton button : window.getActionButtonMap().values()) {
             button.addActionListener(this);
         }
@@ -86,8 +87,6 @@ public class CurrencyConverter implements ActionListener {
                 }
             }
 
-
-
         } else if (actionEvent.getSource() instanceof ActionButton) {
             if (command.equals("+")) {
                 windowChooseCurrency = new WindowChooseCurrency();
@@ -103,6 +102,7 @@ public class CurrencyConverter implements ActionListener {
                         currencyToDelete = currency;
                     }
                 }
+                currentCurrency=new CurrencyButton();
                 currencies.remove(currencyToDelete);
                 window.displayCurrencies(currencies);
                 initEvent();
