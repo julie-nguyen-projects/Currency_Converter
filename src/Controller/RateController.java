@@ -37,19 +37,22 @@ public class RateController {
     public Currency retrieveCurrencyFromJsonFile(String name) {
         List<Currency> currencies = retrieveCurrencies();
         Currency currencyToRetrieve = null;
-        for (Currency currency : currencies) {
-            if (currency.getName().equals(name)) currencyToRetrieve = currency;
+        if (currencies != null) {
+            for (Currency currency : currencies) {
+                if (currency.getName().equals(name)) currencyToRetrieve = currency;
+            }
         }
         return currencyToRetrieve;
     }
 
     private List<Currency> retrieveCurrencies() {
         Gson gson = new Gson();
+        List<Currency> currencies = null;
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(JSON_PATH));
             Type  type = new TypeToken<List<Currency>>(){}.getType();
-            List<Currency> currencies = gson.fromJson(br, type);
+            currencies =  gson.fromJson(br, type);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -78,22 +81,5 @@ public class RateController {
         pound.setCurrentToDollar(1.3401);
 
         currencies.add(pound);
-    }
-
-    private static String readFile(String filename) {
-        String result = "";
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(filename));
-            StringBuilder sb = new StringBuilder();
-            String line = br.readLine();
-            while (line != null) {
-                sb.append(line);
-                line = br.readLine();
-            }
-            result = sb.toString();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-        return result;
     }
 }
