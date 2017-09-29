@@ -12,7 +12,6 @@ public class Main {
     }
 
     private void test(String kikoo){
-        System.out.println(kikoo);
         System.out.println("FUCK");
     }
 }
