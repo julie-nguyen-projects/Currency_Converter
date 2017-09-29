@@ -1,4 +1,5 @@
 import Controller.CurrencyConverter;
+import Controller.RateController;
 import View.WindowChooseCurrency;
 
 public class Main {

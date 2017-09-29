@@ -11,10 +11,13 @@ public class CurrencyConverter implements ActionListener {
 
     private Window window = new Window();
     private ArrayList<Currency> currencies = new ArrayList<>();
+    private RateController rateController = new RateController();
 
     public CurrencyConverter() {
         currencies.add(new Currency("Euro"));
         currencies.add(new Currency("Pound"));
+
+        rateController.initCurrencies();
         window.displayCurrencies(currencies);
     }
 
