@@ -9,6 +9,8 @@ import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Window extends JFrame {
 
@@ -16,6 +18,8 @@ public class Window extends JFrame {
     private JPanel inputPanel = new JPanel();
     private JScrollPane scrollPane = new JScrollPane(outputPanel);
     private ArrayList<InputButton> inputButtons = new ArrayList<>();
+    private ArrayList<ActionButton> plusButtons = new ArrayList<>();
+    private Map<String, ActionButton> actionButtonMap = new HashMap<>();
 
     public JPanel getOutputPanel() {
         return outputPanel;
@@ -27,6 +31,10 @@ public class Window extends JFrame {
 
     public JScrollPane getScrollPane() {
         return scrollPane;
+    }
+
+    public ArrayList<ActionButton> getPlusButtons() {
+        return plusButtons;
     }
 
     public Window() throws HeadlessException {
@@ -53,6 +61,7 @@ public class Window extends JFrame {
                 xButton.setEnabled(false);
                 xButton.setBackground(new Color(200, 220, 255));
             }
+            actionButtonMap.put(currency.getName(),xButton);
 
             // border
             LineBorder line = new LineBorder(Color.lightGray, 3, true);
@@ -73,6 +82,7 @@ public class Window extends JFrame {
 
             // action button +
             ActionButton plusButton = new ActionButton("+");
+            plusButtons.add(plusButton);
             plusButton.setPreferredSize(new Dimension(60, 60));
 
             linePanel.add(xButton);
@@ -152,5 +162,13 @@ public class Window extends JFrame {
         inputPanel.add(aroundCharPanel);
         inputPanel.add(rightCharPanel);
         inputPanel.setBackground(new Color(224, 224, 209));
+    }
+
+    public ArrayList<InputButton> getInputButtons() {
+        return inputButtons;
+    }
+
+    public Map<String, ActionButton> getActionButtonMap() {
+        return actionButtonMap;
     }
 }
