@@ -7,11 +7,11 @@ import java.awt.geom.RoundRectangle2D;
 public class ActionButton extends JButton {
 
     public ActionButton(String type) {
-        switch (type){
+        switch (type) {
             case "x":
                 this.setText("x");
                 break;
-            case "+" :
+            case "+":
                 this.setText("+");
         }
         this.setBackground(new Color(59, 89, 182));
@@ -26,18 +26,20 @@ public class ActionButton extends JButton {
         } else {
             g.setColor(getBackground());
         }
-        g.fillRoundRect(0, 0, getWidth()-1, getHeight()-1, 20, 20);
+        g.fillRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
         super.paintComponent(g);
     }
+
     protected void paintBorder(Graphics g) {
         g.setColor(getForeground());
-        g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, 20, 20);
+        g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
     }
 
     private Shape shape;
+
     public boolean contains(int x, int y) {
         if (shape == null || !shape.getBounds().equals(getBounds())) {
-            shape = new RoundRectangle2D.Float(0, 0, getWidth()-1, getHeight()-1, 40, 40);
+            shape = new RoundRectangle2D.Float(0, 0, getWidth() - 1, getHeight() - 1, 40, 40);
         }
         return shape.contains(x, y);
     }
