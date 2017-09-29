@@ -55,12 +55,25 @@ public class CurrencyConverter implements ActionListener {
                     currencyButton.addActionListener(this);
                 }
             }else{
+                //Suppression de ligne
                 //TODO
-            }
+                }
         }else if (command!=""){
+            //Changement de currency courrante
             //TODO
         }else{
-            System.out.println((((JButton) actionEvent.getSource()).getIcon()));
+            boolean exist = false;
+            for (Currency currency : currencies) {
+                if (currency.getName().equals(((JButton) actionEvent.getSource()).getIcon().toString().split("/")[5].split("\\.")[0])){
+                    exist=true;
+                }
+            }
+            if (!exist){
+                currencies.add(new Currency(((JButton) actionEvent.getSource()).getIcon().toString().split("/")[5].split("\\.")[0]));
+            }
+            window.displayCurrencies(currencies);
+            initEvent();
+            windowChooseCurrency.setVisible(false);
         }
     }
 }

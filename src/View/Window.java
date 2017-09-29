@@ -50,7 +50,8 @@ public class Window extends JFrame {
     }
 
     public void displayCurrencies(ArrayList<Currency> currencies) {
-        outputPanel.setPreferredSize(new Dimension(600, 75 * currencies.size()));
+        outputPanel.removeAll();
+        outputPanel.setPreferredSize(new Dimension(600, 80 * currencies.size()));
         for (Currency currency : currencies) {
             JPanel linePanel = new JPanel();
             linePanel.setPreferredSize(new Dimension(590, 75));
@@ -78,7 +79,7 @@ public class Window extends JFrame {
             CurrencyButton inputButton = new CurrencyButton();
 
             // currency image
-            CurrencyLabel image = new CurrencyLabel(currency.getName().toLowerCase());
+            CurrencyLabel image = new CurrencyLabel(currency.getName());
 
             // action button +
             ActionButton plusButton = new ActionButton("+");
