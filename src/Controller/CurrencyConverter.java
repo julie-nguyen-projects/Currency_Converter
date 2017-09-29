@@ -19,11 +19,12 @@ public class CurrencyConverter implements ActionListener {
     private WindowChooseCurrency windowChooseCurrency;
     private ArrayList<Currency> currencies = new ArrayList<>();
     private CurrencyButton currentCurrency = new CurrencyButton();
+    private RateController rateController;
 
     public CurrencyConverter() {
         currencies.add(new Currency("Euro"));
         currencies.add(new Currency("Pound"));
-        RateController rateController = new RateController();
+        rateController = new RateController();
         rateController.initCurrencies();
         window.displayCurrencies(currencies);
         initEvent();
@@ -126,8 +127,6 @@ public class CurrencyConverter implements ActionListener {
 
     private void convertCurrencyToDollar(String amount, String currencyName) {
         Currency currency = rateController.retrieveCurrencyFromJsonFile(currencyName);
-
-
     }
 
 }
