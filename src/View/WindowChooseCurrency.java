@@ -28,13 +28,14 @@ public class WindowChooseCurrency extends JFrame {
     }
 
     private void initComponent() {
-        String[] strings = {"australiandollar", "brazilianreal", "canadiandollar", "dinar", "dollar", "egyptianpound", "euro", "franc", "goldounce", "icelandickrona",
+        String[] strings = {"Australian dollar", "brazilianreal", "canadiandollar", "dinar", "dollar", "egyptianpound", "euro", "franc", "goldounce", "icelandickrona",
                 "indianrupee", "japaneseyen", "mexicanpeso", "pound", "quatarianrial", "russianruble", "southkoreanwon",
                 "swedishkrona", "swissfranc", "vietnamesedong", "yuan"};
         JButton image;
         for (String string : strings) {
             image = new JButton(new ImageIcon("../Currency_Converter/src/View/Images/" + string + ".jpg"));
             image.setPreferredSize(new Dimension(120, 120));
+            image.setText("");;
             currenciesButtons.add(image);
             main.add(image);
         }
