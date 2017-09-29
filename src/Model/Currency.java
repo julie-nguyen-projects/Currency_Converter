@@ -18,6 +18,14 @@ public class Currency {
         return dollarToCurrent;
     }
 
+    public void setCurrentToDollar(double currentToDollar) {
+        this.currentToDollar = currentToDollar;
+    }
+
+    public void setDollarToCurrent(double dollarToCurrent) {
+        this.dollarToCurrent = dollarToCurrent;
+    }
+
     public Currency(String name) {
         this.name = name;
     }
