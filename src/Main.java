@@ -6,4 +6,8 @@ public class Main {
         CurrencyConverter currencyConverter = new CurrencyConverter();
         WindowChooseCurrency windowChooseCurrency = new WindowChooseCurrency();
     }
+
+    private void test(String kikoo){
+        System.out.println(kikoo);
+    }
 }
