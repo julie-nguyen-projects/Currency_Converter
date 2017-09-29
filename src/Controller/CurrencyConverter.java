@@ -74,6 +74,20 @@ public class CurrencyConverter implements ActionListener {
                     currentCurrency.setText(currentCurrency.getText().substring(0, currentCurrency.getText().length() - 1));
                 }
             }
+
+            double result = convertCurrencyToDollar(currentCurrency.getText(), (String) getKeyFromValue(window.getCurrencyButtonMap(), currentCurrency));
+
+            // parcourir hashmap String , JLabel et update : utiliser dollarToCurrent
+            for (String currencyNameFromMap : window.getCurrencyButtonMap().keySet()) {
+                if (!currencyNameFromMap.equals((String) getKeyFromValue(window.getCurrencyButtonMap(), currentCurrency))) {
+                    String resultToDisplay = convertDollarToCurrency(result, currencyNameFromMap);
+                    CurrencyButton currencyButton = window.getCurrencyButtonMap().get(currencyNameFromMap);
+                    currencyButton.setText(resultToDisplay);
+                }
+            }
+
+
+
         } else if (actionEvent.getSource() instanceof ActionButton) {
             if (command.equals("+")) {
                 windowChooseCurrency = new WindowChooseCurrency();
@@ -125,8 +139,14 @@ public class CurrencyConverter implements ActionListener {
         return null;
     }
 
-    private void convertCurrencyToDollar(String amount, String currencyName) {
+    private double convertCurrencyToDollar(String amount, String currencyName) {
         Currency currency = rateController.retrieveCurrencyFromJsonFile(currencyName);
+        return Double.parseDouble(amount) * currency.getCurrentToDollar();
+    }
+
+    private String convertDollarToCurrency(double amount, String currencyName) {
+        Currency currency = rateController.retrieveCurrencyFromJsonFile(currencyName);
+        return String.valueOf(amount * currency.getDollarToCurrent());
     }
 
 }

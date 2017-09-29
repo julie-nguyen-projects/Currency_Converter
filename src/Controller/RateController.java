@@ -49,8 +49,6 @@ public class RateController {
             BufferedReader br = new BufferedReader(new FileReader(JSON_PATH));
             Type  type = new TypeToken<List<Currency>>(){}.getType();
             List<Currency> currencies = gson.fromJson(br, type);
-
-            System.out.println(currencies);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
