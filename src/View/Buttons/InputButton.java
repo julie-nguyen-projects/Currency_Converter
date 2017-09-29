@@ -12,7 +12,6 @@ public class InputButton extends JButton {
         this.setOpaque(false);
         this.setBackground(Color.GRAY);
         this.setForeground(Color.WHITE);
-
     }
 
     protected void paintComponent(Graphics g) {

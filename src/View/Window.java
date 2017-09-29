@@ -17,7 +17,6 @@ public class Window extends JFrame {
     private JScrollPane scrollPane = new JScrollPane(outputPanel);
     private ArrayList<InputButton> inputButtons = new ArrayList<>();
 
-
     public JPanel getOutputPanel() {
         return outputPanel;
     }
@@ -29,7 +28,6 @@ public class Window extends JFrame {
     public JScrollPane getScrollPane() {
         return scrollPane;
     }
-
 
     public Window() throws HeadlessException {
         super("Currency converter");
@@ -95,8 +93,6 @@ public class Window extends JFrame {
         inputPanel.setPreferredSize(new Dimension(600, 300));
 
         initInputButtons();
-
-
     }
 
     private void initInputButtons() {

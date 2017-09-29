@@ -13,7 +13,6 @@ public class ActionButton extends JButton {
                 break;
             case "+" :
                 this.setText("+");
-
         }
         this.setBackground(new Color(59, 89, 182));
         this.setOpaque(false);
