@@ -71,7 +71,7 @@ public class Window extends JFrame {
             CurrencyButton inputButton = new CurrencyButton();
 
             // currency image
-            CurrencyLabel image = new CurrencyLabel(currencies.get(0).getName());
+            CurrencyLabel image = new CurrencyLabel(currency.getName().toLowerCase());
 
             // action button +
             ActionButton plusButton = new ActionButton("+");
