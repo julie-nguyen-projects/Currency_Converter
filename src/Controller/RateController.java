@@ -22,6 +22,7 @@ public class RateController {
     public void initCurrencies() {
         initEuroCurrency();
         initAustralianDollarCurrency();
+        initPoundCurrency();
 
         try (Writer writer = new FileWriter(JSON_PATH)){
             Gson gson = new GsonBuilder().create();
@@ -69,6 +70,14 @@ public class RateController {
         australianDollar.setCurrentToDollar(0.78);
 
         currencies.add(australianDollar);
+    }
+
+    private void initPoundCurrency() {
+        Currency pound = new Currency(Constants.POUND);
+        pound.setDollarToCurrent(0.746212969);
+        pound.setCurrentToDollar(1.3401);
+
+        currencies.add(pound);
     }
 
     private static String readFile(String filename) {
