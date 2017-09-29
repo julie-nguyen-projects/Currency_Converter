@@ -10,4 +10,8 @@ public class Main {
     private void coucou(){
         System.out.println("coucou");
     }
+
+    private void test(String kikoo){
+        System.out.println(kikoo);
+    }
 }
