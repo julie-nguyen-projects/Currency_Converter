@@ -11,7 +11,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class CurrencyConverter implements ActionListener {
@@ -20,12 +19,11 @@ public class CurrencyConverter implements ActionListener {
     private WindowChooseCurrency windowChooseCurrency;
     private ArrayList<Currency> currencies = new ArrayList<>();
     private CurrencyButton currentCurrency = new CurrencyButton();
-    private RateController rateController = new RateController();
 
     public CurrencyConverter() {
         currencies.add(new Currency("Euro"));
         currencies.add(new Currency("Pound"));
-
+        RateController rateController = new RateController();
         rateController.initCurrencies();
         window.displayCurrencies(currencies);
         initEvent();
@@ -35,42 +33,80 @@ public class CurrencyConverter implements ActionListener {
         for (JButton button : window.getInputButtons()) {
             button.addActionListener(this);
         }
-        for (ActionButton button: window.getActionButtonMap().values()){
+        for (ActionButton button : window.getActionButtonMap().values()) {
             button.addActionListener(this);
         }
-        for (ActionButton button:window.getPlusButtons()){
+        for (ActionButton button : window.getPlusButtons()) {
             button.addActionListener(this);
         }
+        for (CurrencyButton currencyButton : window.getCurrencyButtonMap().values()) {
+            currencyButton.addActionListener(this);
+        }
+        window.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         String command = actionEvent.getActionCommand();
-        if (actionEvent.getSource() instanceof InputButton){
-            currentCurrency.setText(currentCurrency.getText()+command);
-        }else if (actionEvent.getSource() instanceof ActionButton){
-            if (command.equals("+")){
-                windowChooseCurrency=new WindowChooseCurrency();
-                for (JButton currencyButton : windowChooseCurrency.getCurrenciesButtons()){
-                    currencyButton.addActionListener(this);
+        if (actionEvent.getSource() instanceof InputButton) {
+            if (!command.equals("C")) {
+                if (currentCurrency.getText().equals("0") && !command.equals(".")) {
+                    currentCurrency.setText(command);
+                } else {
+                    if (currentCurrency.getText().contains(".")) {
+                        if (!currentCurrency.getText().endsWith(".")) {
+                            System.out.println(currentCurrency.getText());
+                            if ((currentCurrency.getText().split("\\.")[1]).length() < 2) {
+                                currentCurrency.setText(currentCurrency.getText() + command);
+                            }
+                        } else {
+                            currentCurrency.setText(currentCurrency.getText() + command);
+                        }
+                    } else {
+                        currentCurrency.setText(currentCurrency.getText() + command);
+                    }
                 }
-            }else{
-                //Suppression de ligne
-                String currencyName = (String) getKeyFromValue(window.getActionButtonMap(), (ActionButton) actionEvent.getSource());
-
-                //TODO
-                }
-        }else if (command!=""){
-            //Changement de currency courrante
-            //TODO
-        }else{
-            boolean exist = false;
-            for (Currency currency : currencies) {
-                if (currency.getName().equals(((JButton) actionEvent.getSource()).getIcon().toString().split("/")[5].split("\\.")[0])){
-                    exist=true;
+            } else {
+                if (currentCurrency.getText().length() == 1) {
+                    currentCurrency.setText("0");
+                } else {
+                    currentCurrency.setText(currentCurrency.getText().substring(0, currentCurrency.getText().length() - 1));
                 }
             }
-            if (!exist){
+        } else if (actionEvent.getSource() instanceof ActionButton) {
+            if (command.equals("+")) {
+                windowChooseCurrency = new WindowChooseCurrency();
+                for (JButton currencyButton : windowChooseCurrency.getCurrenciesButtons()) {
+                    currencyButton.addActionListener(this);
+                }
+            } else {
+                //Suppression de ligne
+                String currencyName = (String) getKeyFromValue(window.getActionButtonMap(), actionEvent.getSource());
+                Currency currencyToDelete = new Currency("");
+                for (Currency currency : currencies) {
+                    if (currency.getName().equals(currencyName)) {
+                        currencyToDelete = currency;
+                    }
+                }
+                currencies.remove(currencyToDelete);
+                window.displayCurrencies(currencies);
+                initEvent();
+            }
+        } else if (!command.equals("")) {
+            String currencyName = (String) getKeyFromValue(window.getCurrencyButtonMap(), actionEvent.getSource());
+            for (Currency currency : currencies) {
+                if (currency.getName().equals(currencyName)) {
+                    currentCurrency = ((CurrencyButton) actionEvent.getSource());
+                }
+            }
+        } else {
+            boolean exist = false;
+            for (Currency currency : currencies) {
+                if (currency.getName().equals(((JButton) actionEvent.getSource()).getIcon().toString().split("/")[5].split("\\.")[0])) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
                 currencies.add(new Currency(((JButton) actionEvent.getSource()).getIcon().toString().split("/")[5].split("\\.")[0]));
             }
             window.displayCurrencies(currencies);

@@ -20,30 +20,21 @@ public class Window extends JFrame {
     private ArrayList<InputButton> inputButtons = new ArrayList<>();
     private ArrayList<ActionButton> plusButtons = new ArrayList<>();
     private Map<String, ActionButton> actionButtonMap = new HashMap<>();
-
-    public JPanel getOutputPanel() {
-        return outputPanel;
-    }
-
-    public JPanel getInputPanel() {
-        return inputPanel;
-    }
-
-    public JScrollPane getScrollPane() {
-        return scrollPane;
-    }
+    private Map<String, CurrencyButton> currencyButtonMap = new HashMap<>();
 
     public ArrayList<ActionButton> getPlusButtons() {
         return plusButtons;
+    }
+
+    public Map<String, CurrencyButton> getCurrencyButtonMap() {
+        return currencyButtonMap;
     }
 
     public Window() throws HeadlessException {
         super("Currency converter");
         this.setSize(600, 900);
         this.setResizable(false);
-
         initComponents();
-
         this.add(scrollPane, BorderLayout.CENTER);
         this.add(inputPanel, BorderLayout.SOUTH);
         this.setVisible(true);
@@ -51,6 +42,9 @@ public class Window extends JFrame {
 
     public void displayCurrencies(ArrayList<Currency> currencies) {
         outputPanel.removeAll();
+        actionButtonMap = new HashMap<>();
+        currencyButtonMap = new HashMap<>();
+
         outputPanel.setPreferredSize(new Dimension(600, 80 * currencies.size()));
         for (Currency currency : currencies) {
             JPanel linePanel = new JPanel();
@@ -62,7 +56,7 @@ public class Window extends JFrame {
                 xButton.setEnabled(false);
                 xButton.setBackground(new Color(200, 220, 255));
             }
-            actionButtonMap.put(currency.getName(),xButton);
+            actionButtonMap.put(currency.getName(), xButton);
 
             // border
             LineBorder line = new LineBorder(Color.lightGray, 3, true);
@@ -77,6 +71,7 @@ public class Window extends JFrame {
 
             // currency input = currency button
             CurrencyButton inputButton = new CurrencyButton();
+            currencyButtonMap.put(currency.getName(), inputButton);
 
             // currency image
             CurrencyLabel image = new CurrencyLabel(currency.getName());
@@ -93,6 +88,7 @@ public class Window extends JFrame {
             linePanel.add(plusButton);
 
             outputPanel.add(linePanel);
+            outputPanel.repaint();
             this.setVisible(true);
         }
     }
@@ -158,7 +154,6 @@ public class Window extends JFrame {
         JPanel rightCharPanel = new JPanel();
         rightCharPanel.setBackground(new Color(224, 224, 209));
         leftCharPanel.setSize(new Dimension(30, 300));
-        //rightCharPanel.setPreferredSize(new Dimension(38, 300));
         inputPanel.add(leftCharPanel);
         inputPanel.add(aroundCharPanel);
         inputPanel.add(rightCharPanel);
