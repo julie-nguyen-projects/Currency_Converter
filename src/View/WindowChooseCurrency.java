@@ -9,8 +9,9 @@ public class WindowChooseCurrency extends JFrame {
 
     private JPanel main = new JPanel();
     private ArrayList<JButton> currenciesButtons = new ArrayList<>();
+    private static WindowChooseCurrency instance;
 
-    public WindowChooseCurrency() {
+    private WindowChooseCurrency() {
         super("Choose your currency");
         initComponent();
         JScrollPane jScrollPane = new JScrollPane(main);
@@ -21,6 +22,14 @@ public class WindowChooseCurrency extends JFrame {
         this.add(jScrollPane);
         this.setVisible(true);
         this.setResizable(false);
+    }
+
+    public static WindowChooseCurrency getInstance(){
+        if (instance==null){
+            instance=new WindowChooseCurrency();
+        }
+        instance.setVisible(true);
+        return instance;
     }
 
     public ArrayList<JButton> getCurrenciesButtons() {

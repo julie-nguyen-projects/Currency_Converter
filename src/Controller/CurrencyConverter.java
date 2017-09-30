@@ -89,7 +89,7 @@ public class CurrencyConverter implements ActionListener {
 
         } else if (actionEvent.getSource() instanceof ActionButton) {
             if (command.equals("+")) {
-                windowChooseCurrency = new WindowChooseCurrency();
+                windowChooseCurrency=WindowChooseCurrency.getInstance();
                 for (JButton currencyButton : windowChooseCurrency.getCurrenciesButtons()) {
                     currencyButton.addActionListener(this);
                 }
