@@ -15,7 +15,7 @@ public class Constants {
     public static final String JAPANESE_YEN = "Japanese yen";
     public static final String MEXICAN_PESO = "Mexican peso";
     public static final String POUND = "Pound";
-    public static final String QUATARIAN_RIAL = "Quatarian rial";
+    public static final String QATARIAN_RIYAL = "Qatarian riyal";
     public static final String RUSSIAN_RUBLE = "Russian ruble";
     public static final String SOUTH_KOREAN_WON = "South-korean won";
     public static final String SWEDISH_KRONA = "Swedish krona";

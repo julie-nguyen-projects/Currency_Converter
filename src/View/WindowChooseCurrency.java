@@ -38,7 +38,7 @@ public class WindowChooseCurrency extends JFrame {
 
     private void initComponent() {
         String[] strings = {"Australian dollar", "Brazilian real", "Canadian dollar", "Cocaine", "Dinar", "Dollar", "Egyptian pound", "Epitech", "Euro",
-                "Franc", "Gold ounce", "Icelandic krona", "Indian rupee", "Japanese yen", "Kebab", "Mexican peso", "Pound", "Quatarian rial",
+                "Franc", "Gold ounce", "Icelandic krona", "Indian rupee", "Japanese yen", "Kebab", "Mexican peso", "Pound", "Qatarian riyal",
                 "Russian ruble", "South-korean won", "Swedish krona", "Swiss franc", "Vietnamese dong", "Yuan"};
         JButton image;
         for (String string : strings) {

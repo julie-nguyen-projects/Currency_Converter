@@ -34,7 +34,7 @@ public class RateController {
         initJapaneseYenCurrency();
         initMexicanPesoCurrency();
         initPoundCurrency();
-        initQuatarianRialCurrency();
+        initQatarianRiyalCurrency();
         initRussianRubleCurrency();
 
         try (Writer writer = new FileWriter(JSON_PATH)){
@@ -184,8 +184,8 @@ public class RateController {
         currencies.add(pound);
     }
 
-    private void initQuatarianRialCurrency() {
-        Currency newCurrency = new Currency(Constants.QUATARIAN_RIAL);
+    private void initQatarianRiyalCurrency() {
+        Currency newCurrency = new Currency(Constants.QATARIAN_RIYAL);
         newCurrency.setDollarToCurrent(3.60052);
         newCurrency.setCurrentToDollar(0.26695);
 
