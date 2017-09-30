@@ -33,6 +33,7 @@ public class Window extends JFrame {
     public Window() throws HeadlessException {
         super("Currency converter");
         this.setSize(600, 900);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setResizable(false);
         initComponents();
         this.add(scrollPane, BorderLayout.CENTER);
