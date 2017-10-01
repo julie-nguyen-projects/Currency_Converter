@@ -36,6 +36,7 @@ public class RateController {
         initPoundCurrency();
         initQatarianRiyalCurrency();
         initRussianRubleCurrency();
+        initSouthKoreanWonCurrency();
 
         try (Writer writer = new FileWriter(JSON_PATH)){
             Gson gson = new GsonBuilder().create();
@@ -196,6 +197,14 @@ public class RateController {
         Currency newCurrency = new Currency(Constants.RUSSIAN_RUBLE);
         newCurrency.setDollarToCurrent(58.0700);
         newCurrency.setCurrentToDollar(0.01720);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initSouthKoreanWonCurrency() {
+        Currency newCurrency = new Currency(Constants.SOUTH_KOREAN_WON);
+        newCurrency.setDollarToCurrent(1146.15);
+        newCurrency.setCurrentToDollar(0.00087);
 
         currencies.add(newCurrency);
     }
