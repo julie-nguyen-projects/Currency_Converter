@@ -37,6 +37,13 @@ public class RateController {
         initQatarianRiyalCurrency();
         initRussianRubleCurrency();
         initSouthKoreanWonCurrency();
+        initSwedishKronaCurrency();
+        initSwissFrancCurrency();
+        initVietnameseDongCurrency();
+        initYuanCurrency();
+        initKebabCurrency();
+        initEpitechYearCurrency();
+        initCokeCurrency();
 
         try (Writer writer = new FileWriter(JSON_PATH)){
             Gson gson = new GsonBuilder().create();
@@ -209,6 +216,61 @@ public class RateController {
         currencies.add(newCurrency);
     }
 
+    private void initSwedishKronaCurrency() {
+        Currency newCurrency = new Currency(Constants.SWEDISH_KRONA);
+        newCurrency.setDollarToCurrent(8.15178);
+        newCurrency.setCurrentToDollar(0.122673);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initSwissFrancCurrency() {
+        Currency newCurrency = new Currency(Constants.SWISS_FRANC);
+        newCurrency.setDollarToCurrent(0.968561);
+        newCurrency.setCurrentToDollar(1.03246);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initVietnameseDongCurrency() {
+        Currency newCurrency = new Currency(Constants.VIETNAMESE_DONG);
+        newCurrency.setDollarToCurrent(22719);
+        newCurrency.setCurrentToDollar(0.0000440160);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initYuanCurrency() {
+        Currency newCurrency = new Currency(Constants.YUAN);
+        newCurrency.setDollarToCurrent(6.65488);
+        newCurrency.setCurrentToDollar(0.150266);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initKebabCurrency() {
+        Currency newCurrency = new Currency(Constants.KEBAB);
+        newCurrency.setDollarToCurrent(0.166666667);
+        newCurrency.setCurrentToDollar(6);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initEpitechYearCurrency() {
+        Currency newCurrency = new Currency(Constants.EPITECH_YEAR);
+        newCurrency.setDollarToCurrent(0.000022874);
+        newCurrency.setCurrentToDollar(43718.50);
+
+        currencies.add(newCurrency);
+    }
+
+    private void initCokeCurrency() {
+        Currency newCurrency = new Currency(Constants.COKE);
+        newCurrency.setDollarToCurrent(0.010579044);
+        newCurrency.setCurrentToDollar(94.5265);
+
+        currencies.add(newCurrency);
+    }
 
 
 }

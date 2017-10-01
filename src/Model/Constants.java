@@ -22,4 +22,7 @@ public class Constants {
     public static final String SWISS_FRANC = "Swiss franc";
     public static final String VIETNAMESE_DONG = "Vietnamese dong";
     public static final String YUAN = "Yuan";
+    public static final String KEBAB = "Kebab";
+    public static final String EPITECH_YEAR = "Epitech";
+    public static final String COKE = "Cocaine";
 }
