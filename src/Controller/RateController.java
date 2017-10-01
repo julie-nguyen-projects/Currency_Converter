@@ -82,8 +82,8 @@ public class RateController {
 
     private void initEuroCurrency () {
         Currency euro = new Currency(Constants.EURO);
-        euro.setDollarToCurrent(0.85);
-        euro.setCurrentToDollar(1.18);
+        euro.setDollarToCurrent(0.846311);
+        euro.setCurrentToDollar(1.1816);
 
         currencies.add(euro);
     }
