@@ -24,9 +24,9 @@ public class WindowChooseCurrency extends JFrame {
         this.setResizable(false);
     }
 
-    public static WindowChooseCurrency getInstance(){
-        if (instance==null){
-            instance=new WindowChooseCurrency();
+    public static WindowChooseCurrency getInstance() {
+        if (instance == null) {
+            instance = new WindowChooseCurrency();
         }
         instance.setVisible(true);
         return instance;

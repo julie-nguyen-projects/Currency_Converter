@@ -9,11 +9,11 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RateController {
+class RateController {
+    private static final String JSON_PATH = "../Currency_Converter/src/Rates.json";
 
     private List<Currency> currencies = Arrays.asList(
             new CurrencyBuilder(Constants.EURO, 1.1816, 0.846311).build(),
@@ -41,20 +41,18 @@ public class RateController {
             new CurrencyBuilder(Constants.EPITECH_YEAR, 43718.50, 0.000022874).build(),
             new CurrencyBuilder(Constants.COKE, 94.5265, 0.010579044).build()
     );
-    private static final String JSON_PATH = "../Currency_Converter/src/Rates.json";
 
-    public void initCurrencies() {
-        try (Writer writer = new FileWriter(JSON_PATH)){
+    void initCurrencies() {
+        try (Writer writer = new FileWriter(JSON_PATH)) {
             Gson gson = new GsonBuilder().create();
             gson.toJson(currencies, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         retrieveCurrencies();
     }
 
-    public Currency retrieveCurrencyFromJsonFile(String name) {
+    Currency retrieveCurrencyFromJsonFile(String name) {
         List<Currency> currencies = retrieveCurrencies();
         Currency currencyToRetrieve = null;
         if (currencies != null) {
@@ -71,8 +69,9 @@ public class RateController {
 
         try {
             BufferedReader br = new BufferedReader(new FileReader(JSON_PATH));
-            Type  type = new TypeToken<List<Currency>>(){}.getType();
-            currencies =  gson.fromJson(br, type);
+            Type type = new TypeToken<List<Currency>>() {
+            }.getType();
+            currencies = gson.fromJson(br, type);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

@@ -2,9 +2,9 @@ package Model;
 
 public class CurrencyBuilder {
 
-    public final String name;
-    public final double currentToDollar;
-    public final double dollarToCurrent;
+    final String name;
+    final double currentToDollar;
+    final double dollarToCurrent;
 
     public CurrencyBuilder() {
         this.name = "";

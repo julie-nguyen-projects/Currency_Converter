@@ -18,12 +18,9 @@ public class Currency {
         return dollarToCurrent;
     }
 
-    protected Currency(CurrencyBuilder currencyBuilder) {
+    Currency(CurrencyBuilder currencyBuilder) {
         this.name = currencyBuilder.name;
         this.currentToDollar = currencyBuilder.currentToDollar;
         this.dollarToCurrent = currencyBuilder.dollarToCurrent;
     }
-
-
-
 }

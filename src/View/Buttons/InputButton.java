@@ -6,6 +6,8 @@ import java.awt.geom.RoundRectangle2D;
 
 public class InputButton extends JButton {
 
+    private Shape shape;
+
     public InputButton(String text) {
         super(text);
         this.setPreferredSize(new Dimension(50, 50));
@@ -28,8 +30,6 @@ public class InputButton extends JButton {
         g.setColor(getForeground());
         g.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 20, 20);
     }
-
-    private Shape shape;
 
     public boolean contains(int x, int y) {
         if (shape == null || !shape.getBounds().equals(getBounds())) {

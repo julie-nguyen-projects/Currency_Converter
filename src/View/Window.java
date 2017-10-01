@@ -46,7 +46,6 @@ public class Window extends JFrame {
         actionButtonMap = new HashMap<>();
         currencyButtonMap = new HashMap<>();
         plusButtons.removeAll(plusButtons);
-
         outputPanel.setPreferredSize(new Dimension(600, 80 * currencies.size()));
         for (Currency currency : currencies) {
             JPanel linePanel = new JPanel();
@@ -59,10 +58,8 @@ public class Window extends JFrame {
                 xButton.setBackground(new Color(200, 220, 255));
             }
             actionButtonMap.put(currency.getName(), xButton);
-
             // border
             LineBorder line = new LineBorder(Color.lightGray, 3, true);
-
             // currency name
             JLabel label = new JLabel(currency.getName());
             label.setHorizontalAlignment(JLabel.CENTER);
@@ -70,19 +67,15 @@ public class Window extends JFrame {
             label.setBorder(line);
             label.setOpaque(true);
             label.setBackground(new Color(224, 224, 209));
-
             // currency input = currency button
             CurrencyButton inputButton = new CurrencyButton();
             currencyButtonMap.put(currency.getName(), inputButton);
-
             // currency image
             CurrencyLabel image = new CurrencyLabel(currency.getName());
-
             // action button +
             ActionButton plusButton = new ActionButton("+");
             plusButtons.add(plusButton);
             plusButton.setPreferredSize(new Dimension(60, 60));
-
             linePanel.add(xButton);
             linePanel.add(label);
             linePanel.add(inputButton);
@@ -141,7 +134,6 @@ public class Window extends JFrame {
         fourToSixPanel.setPreferredSize(new Dimension(225, 60));
         oneToThreePanel.setPreferredSize(new Dimension(225, 60));
         specialCharPanel.setPreferredSize(new Dimension(225, 60));
-
 
         aroundCharPanel.add(sevenToNinePanel);
         aroundCharPanel.add(fourToSixPanel);

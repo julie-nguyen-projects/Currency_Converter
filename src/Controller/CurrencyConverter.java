@@ -23,8 +23,9 @@ public class CurrencyConverter implements ActionListener {
     private ArrayList<Currency> currencies = new ArrayList<>();
     private CurrencyButton currentCurrency = new CurrencyButton();
     private RateController rateController;
+    private static CurrencyConverter instance;
 
-    public CurrencyConverter() {
+    private CurrencyConverter() {
         currencies.add(new CurrencyBuilder(Constants.EURO, 1.1816, 0.846311).build());
         currencies.add(new CurrencyBuilder(Constants.POUND, 1.3401, 0.746212969).build());
         rateController = new RateController();
@@ -36,8 +37,13 @@ public class CurrencyConverter implements ActionListener {
         }
     }
 
-    private void initEvent() {
+    public static void getInstance() {
+        if (instance == null) {
+            instance = new CurrencyConverter();
+        }
+    }
 
+    private void initEvent() {
         for (ActionButton button : window.getActionButtonMap().values()) {
             button.addActionListener(this);
         }
@@ -86,13 +92,12 @@ public class CurrencyConverter implements ActionListener {
                         currencyButton.setText(resultToDisplay);
                     }
                 }
-            }catch (Exception ignored){}
+            } catch (Exception ignored) {
+            }
             // parcourir hashmap String , JLabel et update : utiliser dollarToCurrent
-
-
         } else if (actionEvent.getSource() instanceof ActionButton) {
             if (command.equals("+")) {
-                windowChooseCurrency=WindowChooseCurrency.getInstance();
+                windowChooseCurrency = WindowChooseCurrency.getInstance();
                 for (JButton currencyButton : windowChooseCurrency.getCurrenciesButtons()) {
                     currencyButton.addActionListener(this);
                 }
@@ -105,7 +110,7 @@ public class CurrencyConverter implements ActionListener {
                         currencyToDelete = currency;
                     }
                 }
-                currentCurrency=new CurrencyButton();
+                currentCurrency = new CurrencyButton();
                 currencies.remove(currencyToDelete);
                 window.displayCurrencies(currencies);
                 initEvent();
@@ -145,7 +150,7 @@ public class CurrencyConverter implements ActionListener {
 
     private double convertCurrencyToDollar(String amount, String currencyName) {
         Currency currency = rateController.retrieveCurrencyFromJsonFile(currencyName);
-            return Double.parseDouble(amount) * currency.getCurrentToDollar();
+        return Double.parseDouble(amount) * currency.getCurrentToDollar();
     }
 
     private String convertDollarToCurrency(double amount, String currencyName) {
