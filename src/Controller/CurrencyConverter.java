@@ -1,6 +1,8 @@
 package Controller;
 
+import Model.Constants;
 import Model.Currency;
+import Model.CurrencyBuilder;
 import View.Buttons.ActionButton;
 import View.Buttons.CurrencyButton;
 import View.Buttons.InputButton;
@@ -23,8 +25,8 @@ public class CurrencyConverter implements ActionListener {
     private RateController rateController;
 
     public CurrencyConverter() {
-        currencies.add(new Currency("Euro"));
-        currencies.add(new Currency("Pound"));
+        currencies.add(new CurrencyBuilder(Constants.EURO, 1.1816, 0.846311).build());
+        currencies.add(new CurrencyBuilder(Constants.POUND, 1.3401, 0.746212969).build());
         rateController = new RateController();
         rateController.initCurrencies();
         window.displayCurrencies(currencies);
@@ -97,7 +99,7 @@ public class CurrencyConverter implements ActionListener {
             } else {
                 //Suppression de ligne
                 String currencyName = (String) getKeyFromValue(window.getActionButtonMap(), actionEvent.getSource());
-                Currency currencyToDelete = new Currency("");
+                Currency currencyToDelete = new CurrencyBuilder().build();
                 for (Currency currency : currencies) {
                     if (currency.getName().equals(currencyName)) {
                         currencyToDelete = currency;
@@ -123,7 +125,8 @@ public class CurrencyConverter implements ActionListener {
                 }
             }
             if (!exist) {
-                currencies.add(new Currency(((JButton) actionEvent.getSource()).getIcon().toString().split("/")[5].split("\\.")[0]));
+                //currencies.add(new Currency(((JButton) actionEvent.getSource()).getIcon().toString().split("/")[5].split("\\.")[0]));
+                currencies.add(new CurrencyBuilder(((JButton) actionEvent.getSource()).getIcon().toString().split("/")[5].split("\\.")[0]).build());
             }
             window.displayCurrencies(currencies);
             initEvent();
